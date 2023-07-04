@@ -1,0 +1,1568 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon/myfavicon.png">
+  <link rel="icon" href="/img/icon/myfavicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Leungyh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="修改commit注释Git使用小技巧【修改commit注释, 超详细】-CSDN博客 .gitignore不生效的问题.gitignore不生效问题解决方法-CSDN博客  第一种方法  .gitignore中已经标明忽略的文件目录下的文件，git push的时候还会出现在push的目录中，或者用git status查看状态，想要忽略的文件还是显示被追踪状态。  原因是因为在git忽略目录中，新建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git">
+<meta property="og:url" content="https://leung-yh.github.io/2022/12/28/GitNote/index.html">
+<meta property="og:site_name" content="Leungyh&#39;s blog">
+<meta property="og:description" content="修改commit注释Git使用小技巧【修改commit注释, 超详细】-CSDN博客 .gitignore不生效的问题.gitignore不生效问题解决方法-CSDN博客  第一种方法  .gitignore中已经标明忽略的文件目录下的文件，git push的时候还会出现在push的目录中，或者用git status查看状态，想要忽略的文件还是显示被追踪状态。  原因是因为在git忽略目录中，新建">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106204027508.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106205737294.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106213128973.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106212936602.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106213105720.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106213402460.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106213430095.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106213838372.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106214049363.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106214533950.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106214653731.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106215422405.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106215500028.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106215553985.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106215624518.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106215733466.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106215802038.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106215829602.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106215935963.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106220720091.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106221158735.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106230719807.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106231012648.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106231136981.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106231328075.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106231922976.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106231831338.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106231851823.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106232300453.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106233323077.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106233531823.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106233551977.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106233703433.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106232938866.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106234005152.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106234149553.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106234255320.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106234341029.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108153555307.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108153626783.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108154506096.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108154513978.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108155153542.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108160353701.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAfmhlYXJ05bCG5b-D5q-U5b-D,size_13,color_FFFFFF,t_70,g_se,x_16.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAfmhlYXJ05bCG5b-D5q-U5b-D,size_8,color_FFFFFF,t_70,g_se,x_16.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230523233921484.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAfmhlYXJ05bCG5b-D5q-U5b-D,size_12,color_FFFFFF,t_70,g_se,x_16.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108160902941.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108161731212.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108161836897.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108162421380.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108162526985.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163215323.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163336295.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163355955.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163427200.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163501417.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163702170.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163729677.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163758564.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163823073.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163832604.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163850670.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163924035.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163933589.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108163944931.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108164008099.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108164017489.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108164108291.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108164147173.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108164220330.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108164234462.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108165403972.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108165758876.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108165806301.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108165816594.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192111793.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192131208.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192139363.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192200136.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192216156.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192223319.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192239487.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192257064.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192316101.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192753427.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192330344.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192340638.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192355689.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192811004.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108192822615.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108193358167.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108193430095.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108193455614.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108193508540.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108193530533.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108193555436.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108193612129.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108193622111.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108194829256.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108194853347.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108194955191.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195003135.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195018754.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195029765.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195047303.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195100977.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195118679.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195553914.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195603805.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195614222.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108195626793.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108200506454.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108200809285.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201028347.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201251691.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201304613.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201322709.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201330352.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201347457.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201354881.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201702532.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201719614.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201735084.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108201751187.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108202847169.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108202909617.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108204240387.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108204259904.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108204337608.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108204357533.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108204409080.png">
+<meta property="og:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230108204421759.png">
+<meta property="article:published_time" content="2022-12-28T10:35:54.000Z">
+<meta property="article:modified_time" content="2023-07-04T12:54:56.491Z">
+<meta property="article:author" content="Leungyh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://leung-yh.github.io/2022/12/28/GitNote/image-20230106204027508.png">
+  
+  
+  
+  <title>Git - Leungyh&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"leung-yh.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leungyh&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Git"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-28 18:35" pubdate>
+          2022年12月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          82 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Git</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年7月4日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="修改commit注释"><a href="#修改commit注释" class="headerlink" title="修改commit注释"></a>修改commit注释</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaoyulike/article/details/119176756">Git使用小技巧【修改commit注释, 超详细】-CSDN博客</a></p>
+<h2 id="gitignore不生效的问题"><a href="#gitignore不生效的问题" class="headerlink" title=".gitignore不生效的问题"></a>.gitignore不生效的问题</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Saintmm/article/details/120847019">.gitignore不生效问题解决方法-CSDN博客</a></p>
+<ul>
+<li><p>第一种方法</p>
+</li>
+<li><p>.gitignore中已经标明忽略的文件目录下的文件，git push的时候还会出现在push的目录中，或者用git status查看状态，想要忽略的文件还是显示被追踪状态。</p>
+</li>
+<li><p>原因是因为在git忽略目录中，新建的文件在git中会有缓存，如果某些文件已经被纳入了版本管理中，就算是在.gitignore中已经声明了忽略路径也是不起作用的，这时候我们就应该先把本地缓存删除，然后再进行git的提交，这样就不会出现忽略的文件了。</p>
+</li>
+<li><p>解决方法: git清除本地缓存（改变成未track状态），然后再提交:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">git rm -r --cached .<br>git add .<br>git commit -m &#x27;update .gitignore&#x27;<br>git push -u origin master<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>需要特别注意的是：</p>
+</li>
+<li><p>1）.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p>
+</li>
+<li><p>2）想要.gitignore起作用，必须要在这些文件不在暂存区中才可以，.gitignore文件只是忽略没有被staged(cached)文件，对于已经被staged文件，加入ignore文件时一定要先从staged移除，才可以忽略。</p>
+</li>
+</ul>
+<h2 id="git-全局忽略文件"><a href="#git-全局忽略文件" class="headerlink" title="git 全局忽略文件"></a>git 全局忽略文件</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1826509">git全局忽略文件</a></p>
+<ul>
+<li><p>git add file_name 报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">The following paths are ignored by one of your .gitignore files:  <br>xxx/index.js<br>hint: Use -f if you really want to add them.<br>hint: Turn this message off by running<br>hint: &quot;git config advice.addIgnoredFile false&quot;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>解决办法：</p>
+<ul>
+<li><p>使用命令 <code>git check-ignore -v file name</code> 去检测忽略配置来源于哪个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">% git check-ignore -v src/components/app/index.js<br>/Users/xx/.gitignore_global:3:index.js	src/components/app/index.js<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>然后 cat 查看内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">% cat /Users/xx/.gitignore_global<br>*~<br>.DS_Store<br>index.js<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>发现忽略列表里面添加了<code>index.js</code>，然后去掉就可以了。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="推送-x2F-克隆仓库时报错"><a href="#推送-x2F-克隆仓库时报错" class="headerlink" title="推送&#x2F;克隆仓库时报错"></a>推送&#x2F;克隆仓库时报错</h2><p>解决方法：</p>
+<ul>
+<li><p>产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</p>
+</li>
+<li><p>方法一：解除 SSL 验证</p>
+<p><code>git config --global http.sslVerify &quot;false&quot;</code></p>
+</li>
+<li><p>方案二：取消代理（需要到项目工程目录打开Git Bash）</p>
+<p><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy </code></p>
+</li>
+</ul>
+<h2 id="Git-SSH配置"><a href="#Git-SSH配置" class="headerlink" title="Git SSH配置"></a>Git SSH配置</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/OnlyAR/p/16155406.html">配置SSH连接Git教程 - Only(AR) - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3f4b2ede5a93">git ssh配置、密钥创建 - 简书 (jianshu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hell_oword/article/details/121591131">IDEA 配置SSH 方式访问 GIT_半吊子Kyle的博客-CSDN博客_idea git ssh</a></p>
+<h2 id="Git-概述"><a href="#Git-概述" class="headerlink" title="Git 概述"></a>Git 概述</h2><p>Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的各种项目。</p>
+<p>Git 易于学习，占地面积小，性能极快。 它具有廉价的本地库，方便的暂存区域和多个工作流分支等特性。其性能优于 Subversion、CVS、Perforce 和 ClearCase 等版本控制工具。</p>
+<h3 id="何为版本控制"><a href="#何为版本控制" class="headerlink" title="何为版本控制"></a>何为版本控制</h3><p>版本控制是一种记录文件内容变化，以便将来查阅特定版本修订情况的系统。</p>
+<p>版本控制最重要的是可以记录文件修改历史记录，从而让用户能够查看历史版本，方便版本切换。</p>
+<h3 id="为什么需要版本控制"><a href="#为什么需要版本控制" class="headerlink" title="为什么需要版本控制"></a>为什么需要版本控制</h3><p>个人开发过渡到团队协作。</p>
+ <img src="image-20230106204027508.png" srcset="/img/loading.gif" lazyload alt="image-20230106204027508" style="zoom:80%;" />
+
+
+
+
+
+<h3 id="版本控制工具"><a href="#版本控制工具" class="headerlink" title="版本控制工具"></a>版本控制工具</h3><h4 id="集中式版本控制工具"><a href="#集中式版本控制工具" class="headerlink" title="集中式版本控制工具"></a>集中式版本控制工具</h4><p>CVS、SVN(Subversion)、VSS……</p>
+<p>集中化的版本控制系统诸如 CVS、SVN 等，都有一个单一的集中管理的服务器，保存所有文件的修订版本，而协同工作的人们都通过客户端连到这台服务器，取出最新的文件或者提交更新。多年以来，这已成为版本控制系统的标准做法。</p>
+<p>这种做法带来了许多好处，每个人都可以在一定程度上看到项目中的其他人正在做些什么。而管理员也可以轻松掌控每个开发者的权限，并且管理一个集中化的版本控制系统，要远比在各个客户端上维护本地数据库来得轻松容易。</p>
+<p>事分两面，有好有坏。这么做显而易见的缺点是中央服务器的单点故障。如果服务器宕机一小时，那么在这一小时内，谁都无法提交更新，也就无法协同工作。</p>
+<h4 id="分布式版本控制工具"><a href="#分布式版本控制工具" class="headerlink" title="分布式版本控制工具"></a>分布式版本控制工具</h4><p>Git、Mercurial、Bazaar、Darcs……</p>
+<p>像 Git 这种分布式版本控制工具，客户端提取的不是最新版本的文件快照，而是把代码仓库完整地镜像下来（本地库）。这样任何一处协同工作用的文件发生故障，事后都可以用其他客户端的本地仓库进行恢复。因为每个客户端的每一次文件提取操作，实际上都是一次对整个文件仓库的完整备份。</p>
+<p>分布式的版本控制系统出现之后,解决了集中式版本控制系统的缺陷:</p>
+<ol>
+<li>服务器断网的情况下也可以进行开发（因为版本控制是在本地进行的）</li>
+<li>每个客户端保存的也都是整个完整的项目（包含历史记录，更加安全）</li>
+</ol>
+<h3 id="Git-工作机制"><a href="#Git-工作机制" class="headerlink" title="Git 工作机制"></a>Git 工作机制</h3> <img src="image-20230106205737294.png" srcset="/img/loading.gif" lazyload alt="image-20230106205737294" style="zoom:80%;" />
+
+
+
+<h3 id="Git-和代码托管中心"><a href="#Git-和代码托管中心" class="headerlink" title="Git 和代码托管中心"></a>Git 和代码托管中心</h3><p>代码托管中心是基于网络服务器的远程代码仓库，一般我们简单称为远程库。</p>
+<p>➢ 局域网</p>
+<ul>
+<li>✓ GitLab</li>
+</ul>
+<p>➢ 互联网</p>
+<ul>
+<li>✓ GitHub（外网）</li>
+<li>✓ Gitee 码云（国内网站）</li>
+</ul>
+<h2 id="Git-常用命令"><a href="#Git-常用命令" class="headerlink" title="Git 常用命令"></a>Git 常用命令</h2><table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git config –global user.name 用户名</td>
+<td>设置用户签名</td>
+</tr>
+<tr>
+<td>git config –global user.email 邮箱</td>
+<td>设置用户签名</td>
+</tr>
+<tr>
+<td>git init</td>
+<td>初始化本地库</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>查看本地库状态</td>
+</tr>
+<tr>
+<td>git add 文件名</td>
+<td>添加到暂存区</td>
+</tr>
+<tr>
+<td>git commit -m “日志信息” 文件名</td>
+<td>提交到本地库</td>
+</tr>
+<tr>
+<td>git reflog</td>
+<td>查看历史记录</td>
+</tr>
+<tr>
+<td>git reset –hard 版本号</td>
+<td>版本穿梭</td>
+</tr>
+</tbody></table>
+<h3 id="设置用户签名"><a href="#设置用户签名" class="headerlink" title="设置用户签名"></a>设置用户签名</h3><ul>
+<li>1 ）基本语法<ul>
+<li>git config –global user.name 用户名</li>
+<li>git config –global user.email 邮箱</li>
+</ul>
+</li>
+<li>说明：<ul>
+<li>签名的作用是区分不同操作者身份。用户的签名信息在每一个版本的提交信息中能够看到，以此确认本次提交是谁做的。</li>
+<li><strong>Git 首次安装必须设置一下用户签名，否则无法提交码。</strong></li>
+<li>注意：这里设置用户签名和将来登录代码托管中心的账号没有任何关系。</li>
+</ul>
+</li>
+</ul>
+<h3 id="初始化本地库"><a href="#初始化本地库" class="headerlink" title="初始化本地库"></a>初始化本地库</h3><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git init</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+ <img src="image-20230106213128973.png" srcset="/img/loading.gif" lazyload alt="image-20230106213128973" style="zoom:80%;" />
+</li>
+<li><p>3）结果查看</p>
+ <img src="image-20230106212936602.png" srcset="/img/loading.gif" lazyload alt="image-20230106212936602" style="zoom:80%;" /></li>
+</ul>
+<h3 id="查看本地库状态"><a href="#查看本地库状态" class="headerlink" title="查看本地库状态"></a>查看本地库状态</h3><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git status</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<ul>
+<li><p>首次查看（ 工作区没有任何文件）</p>
+ <img src="image-20230106213105720.png" srcset="/img/loading.gif" lazyload alt="image-20230106213105720" style="zoom:80%;" />
+</li>
+<li><p>新增文件（hello.txt ）</p>
+ <img src="image-20230106213402460.png" srcset="/img/loading.gif" lazyload alt="image-20230106213402460" style="zoom:80%;" />
+</li>
+<li><p>再次查看（ 检测到未追踪的文件）</p>
+ <img src="image-20230106213430095.png" srcset="/img/loading.gif" lazyload alt="image-20230106213430095" style="zoom:80%;" /></li>
+</ul>
+</li>
+</ul>
+<h3 id="添加暂存区"><a href="#添加暂存区" class="headerlink" title="添加暂存区"></a>添加暂存区</h3><h4 id="将工作区的文件添加到暂存区"><a href="#将工作区的文件添加到暂存区" class="headerlink" title="将工作区的文件添加到暂存区"></a>将工作区的文件添加到暂存区</h4><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git add 文件名</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	 <img src="image-20230106213838372.png" srcset="/img/loading.gif" lazyload alt="image-20230106213838372" style="zoom:80%;" /></p>
+</li>
+<li><p>3）查看状态（检测到暂存区 有新文件）</p>
+<p>​	 <img src="image-20230106214049363.png" srcset="/img/loading.gif" lazyload alt="image-20230106214049363" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h3 id="提交本地库"><a href="#提交本地库" class="headerlink" title="提交本地库"></a>提交本地库</h3><h4 id="将暂存区的-文件-提交到本地库"><a href="#将暂存区的-文件-提交到本地库" class="headerlink" title="将暂存区的 文件 提交到本地库"></a>将暂存区的 文件 提交到本地库</h4><ul>
+<li><p>1 ）基本语法</p>
+<ul>
+<li>git commit -m “ 日志信息” 文件名</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	  <img src="image-20230106214533950.png" srcset="/img/loading.gif" lazyload alt="image-20230106214533950" style="zoom:80%;" /></p>
+</li>
+<li><p>3）查看状态（没有文件需要提交）</p>
+<p>​	 <img src="image-20230106214653731.png" srcset="/img/loading.gif" lazyload alt="image-20230106214653731" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h3 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h3><ul>
+<li><p>2）案例实操</p>
+<p>​	 <img src="image-20230106215422405.png" srcset="/img/loading.gif" lazyload alt="image-20230106215422405" style="zoom:80%;" /></p>
+</li>
+<li><p>3）查看状态（检测到工作区有文件被修改）</p>
+<p>​	 <img src="image-20230106215500028.png" srcset="/img/loading.gif" lazyload alt="image-20230106215500028" style="zoom:80%;" /></p>
+</li>
+<li><p>4）将修改的文件再次添加暂存区</p>
+<p>​	 <img src="image-20230106215553985.png" srcset="/img/loading.gif" lazyload alt="image-20230106215553985" style="zoom:80%;" /></p>
+</li>
+<li><p>5）查看状态（工作区的修改添加到了暂存区）</p>
+<p>​	 <img src="image-20230106215624518.png" srcset="/img/loading.gif" lazyload alt="image-20230106215624518" style="zoom:80%;" /></p>
+</li>
+<li><p>6）提交</p>
+<p>​	 <img src="image-20230106215733466.png" srcset="/img/loading.gif" lazyload alt="image-20230106215733466" style="zoom:80%;" /></p>
+</li>
+<li><p>7）查看状态</p>
+<p>​	 <img src="image-20230106215802038.png" srcset="/img/loading.gif" lazyload alt="image-20230106215802038" style="zoom:80%;" /></p>
+</li>
+<li><p>8）查看历史版本</p>
+<p>​	 <img src="image-20230106215829602.png" srcset="/img/loading.gif" lazyload alt="image-20230106215829602" style="zoom:80%;" /></p>
+</li>
+<li><p>9）查看文件（最新的文件）</p>
+<p>​	 <img src="image-20230106215935963.png" srcset="/img/loading.gif" lazyload alt="image-20230106215935963" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h3 id="历史版本"><a href="#历史版本" class="headerlink" title="历史版本"></a>历史版本</h3><h4 id="查看历史版本"><a href="#查看历史版本" class="headerlink" title="查看历史版本"></a>查看历史版本</h4><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git reflog 查看版本信息</li>
+<li>git log 查看版本详细信息</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	 <img src="image-20230106220720091.png" srcset="/img/loading.gif" lazyload alt="image-20230106220720091" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h4 id="版本穿梭"><a href="#版本穿梭" class="headerlink" title="版本穿梭"></a>版本穿梭</h4><p><strong>Git 切换版本，底层其实是移动的 HEAD 指针</strong></p>
+<ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git reset –hard 版本号</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	  <img src="image-20230106221158735.png" srcset="/img/loading.gif" lazyload alt="image-20230106221158735" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h2 id="Git-分支操作"><a href="#Git-分支操作" class="headerlink" title="Git 分支操作"></a>Git 分支操作</h2><h3 id="什么是分支"><a href="#什么是分支" class="headerlink" title="什么是分支"></a>什么是分支</h3><p>在版本控制过程中，同时推进多个任务，为每个任务，我们就可以创建每个任务的单独分支。使用分支意味着程序员可以把自己的工作从开发主线上分离开来，开发自己分支的时候，不会影响主线分支的运行。对于初学者而言，分支可以简单理解为副本，一个分支就是一个单独的副本。（分支底层其实也是指针的引用）</p>
+<img src="image-20230106230719807.png" srcset="/img/loading.gif" lazyload alt="image-20230106230719807" style="zoom:80%;" />
+
+
+
+<h3 id="分支的好处"><a href="#分支的好处" class="headerlink" title="分支的好处"></a>分支的好处</h3><ul>
+<li><p>同时并行推进多个功能开发，提高开发效率。</p>
+</li>
+<li><p>各个分支在开发过程中，如果某一个分支开发失败，不会对其他分支有任何影响。</p>
+<p>失败的分支删除重新开始即可</p>
+</li>
+</ul>
+<h3 id="分支的操作"><a href="#分支的操作" class="headerlink" title="分支的操作"></a>分支的操作</h3><table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git branch 分支名</td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td>git branch -v</td>
+<td>查看分支</td>
+</tr>
+<tr>
+<td>git checkout 分支名</td>
+<td>切换分支</td>
+</tr>
+<tr>
+<td>git merge 分支名</td>
+<td>把指定的分支合并到当前分支上</td>
+</tr>
+</tbody></table>
+<h4 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h4><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git branch -v</li>
+</ul>
+</li>
+<li><p>2 ）案例实操</p>
+<p>​	 <img src="image-20230106231012648.png" srcset="/img/loading.gif" lazyload alt="image-20230106231012648" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git branch 分支名</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	 <img src="image-20230106231136981.png" srcset="/img/loading.gif" lazyload alt="image-20230106231136981" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h4 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h4><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git checkout 分支名</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	 <img src="image-20230106231328075.png" srcset="/img/loading.gif" lazyload alt="image-20230106231328075" style="zoom:80%;" /></p>
+</li>
+<li><p>3）查看两个分支上的内容，会有不同</p>
+<p>​	 <img src="image-20230106231922976.png" srcset="/img/loading.gif" lazyload alt="image-20230106231922976" style="zoom:80%;" /></p>
+<p>​	 <img src="image-20230106231831338.png" srcset="/img/loading.gif" lazyload alt="image-20230106231831338" style="zoom:80%;" /></p>
+<p>​	 <img src="image-20230106231851823.png" srcset="/img/loading.gif" lazyload alt="image-20230106231851823" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li><p>git merge 分支名</p>
+<p>作用：把指定的分支合并到当前分支</p>
+</li>
+</ul>
+</li>
+<li><p>2）案例实操 在 master 分支上合并 hot-fix 分支</p>
+<ul>
+<li>注意：要先转到 master 分支上（因为只能合并到“当前分支”）</li>
+</ul>
+<p>​	 <img src="image-20230106232300453.png" srcset="/img/loading.gif" lazyload alt="image-20230106232300453" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h4 id="产生冲突"><a href="#产生冲突" class="headerlink" title="产生冲突"></a>产生冲突</h4><ul>
+<li><p>冲突产生的表现：后面状态为 MERGING</p>
+ <img src="image-20230106233323077.png" srcset="/img/loading.gif" lazyload alt="image-20230106233323077" style="zoom:80%;" />
+</li>
+<li><p>冲突产生的原因：</p>
+<p>合并分支时，两个分支在 同一个文件的同一个位置有两套完全不同的修改。</p>
+<p>Git 无法替我们决定使用哪一个。必须 人为决定新代码内容。</p>
+  <img src="image-20230106233531823.png" srcset="/img/loading.gif" lazyload alt="image-20230106233531823" style="zoom:80%;" />
+
+  <img src="image-20230106233551977.png" srcset="/img/loading.gif" lazyload alt="image-20230106233551977" style="zoom:80%;" />
+</li>
+<li><p>查看状态（检测到有文件有两处修改）</p>
+ <img src="image-20230106233703433.png" srcset="/img/loading.gif" lazyload alt="image-20230106233703433" style="zoom:80%;" /></li>
+</ul>
+<h4 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h4><ul>
+<li><p>1）编辑有冲突的文件，删除特殊符号，决定要使用的内容</p>
+<ul>
+<li><p>特殊符号：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD <br>当前分支的代码 <br><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span> <br>合并过来的代码 <br>&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix<br></code></pre></td></tr></table></figure>
+
+ <img src="image-20230106232938866.png" srcset="/img/loading.gif" lazyload alt="image-20230106232938866" style="zoom:80%;" />
+</li>
+<li><p>修改为：</p>
+ <img src="image-20230106234005152.png" srcset="/img/loading.gif" lazyload alt="image-20230106234005152" style="zoom:80%;" /></li>
+</ul>
+</li>
+<li><p>2）添加到暂存区</p>
+ <img src="image-20230106234149553.png" srcset="/img/loading.gif" lazyload alt="image-20230106234149553" style="zoom:80%;" />
+</li>
+<li><p>3）执行提交（注意：此时使用 git commit 命令时<strong>不能带文件名</strong>）</p>
+ <img src="image-20230106234255320.png" srcset="/img/loading.gif" lazyload alt="image-20230106234255320" style="zoom:80%;" /></li>
+</ul>
+<h3 id="创建分支和切换分支图解"><a href="#创建分支和切换分支图解" class="headerlink" title="创建分支和切换分支图解"></a>创建分支和切换分支图解</h3><img src="image-20230106234341029.png" srcset="/img/loading.gif" lazyload alt="image-20230106234341029" style="zoom:80%;" />
+
+<ul>
+<li>master、hot-fix 其实都是指向具体版本记录的指针。</li>
+<li>当前所在的分支，其实是由 HEAD决定的。所以创建分支的本质就是多创建一个指针。</li>
+<li>HEAD 如果指向 master，那么我们现在就在 master 分支上。</li>
+<li>HEAD 如果执行 hotfix，那么我们现在就在 hotfix 分支上。</li>
+<li>所以切换分支的本质就是移动 HEAD 指针。</li>
+</ul>
+<h2 id="Git-团队协作机制"><a href="#Git-团队协作机制" class="headerlink" title="Git 团队协作机制"></a>Git 团队协作机制</h2><h3 id="团队内协作"><a href="#团队内协作" class="headerlink" title="团队内协作"></a>团队内协作</h3><img src="image-20230108153555307.png" srcset="/img/loading.gif" lazyload alt="image-20230108153555307" style="zoom:80%;" />
+
+
+
+<h3 id="跨团队协作"><a href="#跨团队协作" class="headerlink" title="跨团队协作"></a>跨团队协作</h3><img src="image-20230108153626783.png" srcset="/img/loading.gif" lazyload alt="image-20230108153626783" style="zoom:80%;" />
+
+
+
+
+
+<h2 id="GitHub-操作"><a href="#GitHub-操作" class="headerlink" title="GitHub 操作"></a>GitHub 操作</h2><h3 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h3> <img src="image-20230108154506096.png" srcset="/img/loading.gif" lazyload alt="image-20230108154506096" style="zoom:80%;" />
+
+ <img src="image-20230108154513978.png" srcset="/img/loading.gif" lazyload alt="image-20230108154513978" style="zoom:80%;" />
+
+
+
+<h3 id="远程仓库操作"><a href="#远程仓库操作" class="headerlink" title="远程仓库操作"></a>远程仓库操作</h3><table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git remote -v</td>
+<td>查看当前所有远程地址别名</td>
+</tr>
+<tr>
+<td>git remote add 别名 远程地址</td>
+<td>起别名</td>
+</tr>
+<tr>
+<td>git push 别名 分支</td>
+<td>推送本地分支上的内容到远程仓库</td>
+</tr>
+<tr>
+<td>git clone 远程地址</td>
+<td>将远程仓库的内容克隆到本地</td>
+</tr>
+<tr>
+<td>git pull 远程库地址别名 远程分支名</td>
+<td>将远程仓库对于分支最新内容拉下来后<br/>与当前本地分支直接合并</td>
+</tr>
+</tbody></table>
+<h4 id="创建远程仓库别名"><a href="#创建远程仓库别名" class="headerlink" title="创建远程仓库别名"></a>创建远程仓库别名</h4><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git remote -v        查看当前所有远程地址别名</li>
+<li>git remote add 别名 远程地址</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	 <img src="image-20230108155153542.png" srcset="/img/loading.gif" lazyload alt="image-20230108155153542" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h4 id="推送分支时报错"><a href="#推送分支时报错" class="headerlink" title="推送分支时报错"></a>推送分支时报错</h4><ul>
+<li><p>报错提示：</p>
+  <img src="image-20230108160353701.png" srcset="/img/loading.gif" lazyload alt="image-20230108160353701" style="zoom:80%;" />
+</li>
+<li><p>解决方法：</p>
+<ul>
+<li><p>产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</p>
+</li>
+<li><p>方法一：解除 SSL 验证</p>
+<p><code>git config --global http.sslVerify &quot;false&quot;</code></p>
+</li>
+<li><p>方案二：取消代理</p>
+<p><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy </code></p>
+</li>
+</ul>
+</li>
+<li><p>报错提示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git push -u origin master<br>fatal: &#x27;git@github.com/zejun_web&#x27; does not appear to be a git repository<br>fatal: Could not read from remote repository.<br> <br>Please make sure you have the correct access rights and the repository exists.<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>解决方法：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42412061/article/details/122535952">git push失败，报错fatal: does not appear to a git repository … …</a></p>
+</li>
+<li><p>先检查一下git remote -v</p>
+<p> <img src="/2022/12/28/GitNote/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAfmhlYXJ05bCG5b-D5q-U5b-D,size_13,color_FFFFFF,t_70,g_se,x_16.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p>发现是 remote 命令错了</p>
+</li>
+<li><p>先 remove 掉，再添加再远程的 origin</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git remote rm origin<br></code></pre></td></tr></table></figure>
+
+<p> <img src="/2022/12/28/GitNote/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAfmhlYXJ05bCG5b-D5q-U5b-D,size_8,color_FFFFFF,t_70,g_se,x_16.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p>再次使用 git remote -v 查看，发现已经没有 origin 了</p>
+<p> <img src="/2022/12/28/GitNote/image-20230523233921484.png" srcset="/img/loading.gif" lazyload alt="image-20230523233921484"></p>
+</li>
+<li><p>再正确输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git remote add origin https://gitee.com/shenlinlang/personal.git<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>再 git push 就可以了</p>
+<p> <img src="/2022/12/28/GitNote/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAfmhlYXJ05bCG5b-D5q-U5b-D,size_12,color_FFFFFF,t_70,g_se,x_16.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="推送本地分支到远程仓库"><a href="#推送本地分支到远程仓库" class="headerlink" title="推送本地分支到远程仓库"></a>推送本地分支到远程仓库</h4><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git push 别名 <strong>分支</strong></li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	 <img src="image-20230108160902941.png" srcset="/img/loading.gif" lazyload alt="image-20230108160902941" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h4 id="拉取远程库到本地库"><a href="#拉取远程库到本地库" class="headerlink" title="拉取远程库到本地库"></a>拉取远程库到本地库</h4><ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git pull 远程地址 分支</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	 <img src="image-20230108161731212.png" srcset="/img/loading.gif" lazyload alt="image-20230108161731212" style="zoom:80%;" /></p>
+<p>​	 <img src="image-20230108161836897.png" srcset="/img/loading.gif" lazyload alt="image-20230108161836897" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h4 id="克隆远程库到本地"><a href="#克隆远程库到本地" class="headerlink" title="克隆远程库到本地"></a>克隆远程库到本地</h4><p><strong>总结：</strong>clone 会做如下操作： 1、拉取代码。 2、初始化本地仓库。 3、创建别名</p>
+<ul>
+<li><p>1）基本语法</p>
+<ul>
+<li>git clone 远程地址</li>
+</ul>
+</li>
+<li><p>2）案例实操</p>
+<p>​	 <img src="image-20230108162421380.png" srcset="/img/loading.gif" lazyload alt="image-20230108162421380" style="zoom:80%;" /></p>
+<p>​	 <img src="image-20230108162526985.png" srcset="/img/loading.gif" lazyload alt="image-20230108162526985" style="zoom:80%;" /></p>
+</li>
+</ul>
+<h4 id="邀请加入团队"><a href="#邀请加入团队" class="headerlink" title="邀请加入团队"></a>邀请加入团队</h4><ul>
+<li><p>1）选择邀请合作者</p>
+<p>​	 <img src="image-20230108163215323.png" srcset="/img/loading.gif" lazyload alt="image-20230108163215323" style="zoom: 50%;" /></p>
+</li>
+<li><p>2）填入想要合作的人</p>
+<p>​	 <img src="image-20230108163336295.png" srcset="/img/loading.gif" lazyload alt="image-20230108163336295" style="zoom:50%;" /></p>
+</li>
+<li><p>3）复 制 地 址 并 通 过 微 信 钉 钉 等 方 式 发 送 给 该 用 户 ， 复 制 内 容 如 下 ：<br><a target="_blank" rel="noopener" href="https://github.com/atguiguyueyue/git-shTest/invitations">https://github.com/atguiguyueyue/git-shTest/invitations</a></p>
+<p>​	 <img src="image-20230108163355955.png" srcset="/img/loading.gif" lazyload alt="image-20230108163355955" style="zoom:50%;" /></p>
+</li>
+<li><p>4）在 atguigulinghuchong 这个账号中的地址栏复制收到邀请 的 链接，点击接受邀请</p>
+<p>​	 <img src="image-20230108163427200.png" srcset="/img/loading.gif" lazyload alt="image-20230108163427200" style="zoom:50%;" /></p>
+</li>
+<li><p>5）在成功之后可以在 atguigulinghuchong 这个账号上看到 git-Test 的远程仓库</p>
+<p>​	 <img src="image-20230108163501417.png" srcset="/img/loading.gif" lazyload alt="image-20230108163501417" style="zoom:50%;" /></p>
+</li>
+<li><p>6）令狐冲可以修改内容并 push 到远程仓库</p>
+</li>
+</ul>
+<h3 id="跨团队协作-1"><a href="#跨团队协作-1" class="headerlink" title="跨团队协作"></a>跨团队协作</h3><ul>
+<li><p>1）将远程仓库的地址复制发给邀请跨团队协作的人，比如东方不败</p>
+<p>​	 <img src="image-20230108163702170.png" srcset="/img/loading.gif" lazyload alt="image-20230108163702170" style="zoom:50%;" /></p>
+</li>
+<li><p>2）在东方不败的 GitHub 账号里的地址栏复制收到的链接，然后点击 Fork 将项目叉到自己的本地仓库</p>
+<p>​	 <img src="image-20230108163729677.png" srcset="/img/loading.gif" lazyload alt="image-20230108163729677" style="zoom:50%;" /></p>
+<p>​	叉成功后可以看到当前仓库信息</p>
+<p>​	 <img src="image-20230108163758564.png" srcset="/img/loading.gif" lazyload alt="image-20230108163758564" style="zoom:50%;" /></p>
+</li>
+<li><p>3）东方不败就可以在线编辑叉取过来的文件</p>
+<p>​	 <img src="image-20230108163823073.png" srcset="/img/loading.gif" lazyload alt="image-20230108163823073" style="zoom:50%;" /></p>
+<p>​	 <img src="image-20230108163832604.png" srcset="/img/loading.gif" lazyload alt="image-20230108163832604" style="zoom:50%;" /></p>
+</li>
+<li><p>4）编辑完毕后，填写描述信息并点击左下角绿色按钮提交</p>
+<p>​	 <img src="image-20230108163850670.png" srcset="/img/loading.gif" lazyload alt="image-20230108163850670" style="zoom:50%;" /></p>
+</li>
+<li><p>5）接下来点击上方的 Pull 请求，并创建一个新的请求</p>
+<p>​	 <img src="image-20230108163924035.png" srcset="/img/loading.gif" lazyload alt="image-20230108163924035" style="zoom:50%;" /></p>
+<p>​	 <img src="image-20230108163933589.png" srcset="/img/loading.gif" lazyload alt="image-20230108163933589" style="zoom:50%;" /></p>
+ <img src="image-20230108163944931.png" srcset="/img/loading.gif" lazyload alt="image-20230108163944931" style="zoom:50%;" />
+</li>
+<li><p>6）回到岳岳 GitHub 账号可以看到有一个 Pull request 请求</p>
+<p>​	 <img src="image-20230108164008099.png" srcset="/img/loading.gif" lazyload alt="image-20230108164008099" style="zoom:50%;" /></p>
+<p>​	<img src="image-20230108164017489.png" srcset="/img/loading.gif" lazyload alt="image-20230108164017489" style="zoom: 40%;" /></p>
+<p>​	 进入到聊天室，可以讨论代码相关内容</p>
+<p>​	 <img src="image-20230108164108291.png" srcset="/img/loading.gif" lazyload alt="image-20230108164108291" style="zoom:50%;" /></p>
+ <img src="image-20230108164147173.png" srcset="/img/loading.gif" lazyload alt="image-20230108164147173" style="zoom:50%;" />
+</li>
+<li><p>7）如果代码没有问题，可以点击 Merge pull reque 合并代码</p>
+<p>​	 <img src="image-20230108164220330.png" srcset="/img/loading.gif" lazyload alt="image-20230108164220330" style="zoom:50%;" /></p>
+<p>​	 <img src="image-20230108164234462.png" srcset="/img/loading.gif" lazyload alt="image-20230108164234462" style="zoom:50%;" /></p>
+</li>
+</ul>
+<h3 id="SSH-免密登录"><a href="#SSH-免密登录" class="headerlink" title="SSH 免密登录"></a>SSH 免密登录</h3><p>我们可以看到远程仓库中还有一个 SSH 的地址，因此我们也可以使用 SSH 进行访问。</p>
+ <img src="image-20230108165403972.png" srcset="/img/loading.gif" lazyload alt="image-20230108165403972" style="zoom:67%;" />
+
+<p>具体操作如下：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">--进入当前用户的家目录<br>Layne@LAPTOP-Layne MINGW64 <span class="hljs-string">/d/Git-Space/SH0720</span> <span class="hljs-params">(master)</span><br>$ <span class="hljs-keyword">cd</span><br>--删除<span class="hljs-string">.ssh</span> 目录<br>Layne@LAPTOP-Layne MINGW64 ~<br>$ rm -rvf <span class="hljs-string">.ssh</span><br>removed &#x27;<span class="hljs-string">.ssh/known_hosts</span>&#x27;<br>removed directory &#x27;<span class="hljs-string">.ssh</span>&#x27;<br>--运行命令生成<span class="hljs-string">.ssh</span> 秘钥目录[注意：这里-C 这个参数是大写的 C]<br>Layne@LAPTOP-Layne MINGW64 ~<br>$ ssh-keygen -t rsa -C atguiguyueyue@aliyun.com<br>Generating public/private rsa key pair.<br>Enter file in which to save the key <span class="hljs-params">(/c/Users/Layne/.ssh/id_rsa)</span>:<br>Created directory &#x27;<span class="hljs-string">/c/Users/Layne/.ssh</span>&#x27;.<br>Enter passphrase <span class="hljs-params">(empty for no passphrase)</span>:<br>Enter same passphrase again:<br>Your identification has been saved in <span class="hljs-string">/c/Users/Layne/.ssh/id_rsa.</span><br>Your public key has been saved in <span class="hljs-string">/c/Users/Layne/.ssh/id_rsa.pub.</span><br>The key fingerprint is:<br>SHA256<span class="hljs-function">:7CPfRLITKcYDhaqpEDeok7Atvwh2reRmpxxOC6dkY44</span><br>atguiguyueyue@aliyun.com<br>The key&#x27;s randomart image is:<br>+<span class="hljs-params">---</span>[RSA 2048]<span class="hljs-params">----</span>+<br>| <span class="hljs-string">..</span> |<br>| <span class="hljs-string">..</span> |<br>| . <span class="hljs-string">..</span> |<br>|+ + o . . |<br>|oO . = S . |<br>|X . <span class="hljs-string">..</span> + = |<br>|+@ * <span class="hljs-string">..</span> = . |<br>|X.&amp;o+. o = |<br>|Eo+Oo . . |<br>+<span class="hljs-params">----</span>[SHA256]<span class="hljs-params">-----</span>+<br>--进入<span class="hljs-string">.ssh</span> 目录查看文件列表<br>Layne@LAPTOP-Layne MINGW64 ~<br>$ <span class="hljs-keyword">cd</span> <span class="hljs-string">.ssh</span><br>Layne@LAPTOP-Layne MINGW64 ~<span class="hljs-string">/.ssh</span><br>$ ll -a<br>total 21<br>drwxr-xr-x 1 Layne 197609 0 11 月 25 19<span class="hljs-function">:27</span> <span class="hljs-string">./</span><br>drwxr-xr-x 1 Layne 197609 0 11 月 25 19<span class="hljs-function">:27</span> <span class="hljs-string">../</span><br>-rw-r<span class="hljs-params">--r--</span> 1 Layne 197609 1679 11 月 25 19<span class="hljs-function">:27</span> id_rsa<br>-rw-r<span class="hljs-params">--r--</span> 1 Layne 197609 406 11 月 25 19<span class="hljs-function">:27</span> id_rsa.pub<br>--查看 id_rsa.pub 文件内容<br>Layne@LAPTOP-Layne MINGW64 ~<span class="hljs-string">/.ssh</span><br>$ cat id_rsa.pub<br>ssh-rsa<br>AAAAB3NzaC1yc2EAAAADAQABAAABAQDRXRsk9Ohtg1AXLltsuNRAGBsx3ypE1O1Rkdzpm<br>l1woa6y6G62lZri3XtCH0F7GQvnMvQtPISJFXXWo+jFHZmqYQa/6kOIMv2sszcoj2Qtwl<br>lGXTPn/4T2h/cHjSHfc+ks8OYP7OWOOefpOCbYY/7DWYrl89k7nQlfd+A1FV/vQmcsa1L<br>P5ihqjpjms2CoUUen8kZHbjwHBAHQHWRE+Vc371MG/dwINvCi8n7ibI86o2k0dW0+8SL+<br>svPV/Y0G9m+RAqgec8b9U6DcSSAMH5uq4UWfnAcUNagb/aJQLytrH0pLa8nMv3XdSGNNo<br>AGBFeW2+K81XrmkP27FrLI6lDef atguiguyueyue@aliyun.com<br></code></pre></td></tr></table></figure>
+
+<p>复制 id_rsa.pub 文件内容，登录 GitHub，点击用户头像→Settings→SSH and GPG keys</p>
+ <img src="image-20230108165758876.png" srcset="/img/loading.gif" lazyload alt="image-20230108165758876" style="zoom:50%;" />
+
+ <img src="image-20230108165806301.png" srcset="/img/loading.gif" lazyload alt="image-20230108165806301" style="zoom:50%;" />
+
+ <img src="image-20230108165816594.png" srcset="/img/loading.gif" lazyload alt="image-20230108165816594" style="zoom:50%;" />
+
+<p>接下来再往远程仓库 push 东西的时候使用 SSH 连接就不需要登录了</p>
+<h2 id="IDEA-集成-Git"><a href="#IDEA-集成-Git" class="headerlink" title="IDEA 集成 Git"></a>IDEA 集成 Git</h2><h3 id="配置-Git-忽略文件"><a href="#配置-Git-忽略文件" class="headerlink" title="配置 Git 忽略文件"></a>配置 Git 忽略文件</h3><ul>
+<li><p>为什么要忽略它们</p>
+<p>与项目的实际功能无关，不参与服务器上部署运行。忽略掉它们能够屏蔽 IDE 工具之间的差异</p>
+</li>
+<li><p>怎么忽略</p>
+<ul>
+<li><p>1）创建忽略规则文件 <strong>xxxx.ignore</strong>（前缀名随便起，建议是 git.ignore）</p>
+<p>​	这个文件的存放位置原则上在哪里都可以，为了便于让~&#x2F;.gitconfig 文件引用，建议也放在用户家目录下</p>
+<p>git.ignore 文件模版内容如下：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-comment"># Compiled class file</span><br>*<span class="hljs-string">.class</span><br><br><span class="hljs-comment"># Log file</span><br>*<span class="hljs-string">.log</span><br><br><span class="hljs-comment"># BlueJ files</span><br>*<span class="hljs-string">.ctxt</span><br><br><span class="hljs-comment"># Mobile Tools for Java (J2ME)</span><br><span class="hljs-string">.mtj.tmp/</span><br><br><span class="hljs-comment"># Package Files #</span><br>*<span class="hljs-string">.jar</span><br>*<span class="hljs-string">.war</span><br>*<span class="hljs-string">.nar</span><br>*<span class="hljs-string">.ear</span><br>*<span class="hljs-string">.zip</span><br>*<span class="hljs-string">.tar.gz</span><br>*<span class="hljs-string">.rar</span><br><br><span class="hljs-comment"># virtual machine crash logs, see</span><br>http:<span class="hljs-string">//www.java.com/en/download/help/error_hotspot.xml</span><br>hs_err_pid*<br><br><span class="hljs-string">.classpath</span><br><span class="hljs-string">.project</span><br><span class="hljs-string">.settings</span><br>target<br><span class="hljs-string">.idea</span><br>*<span class="hljs-string">.iml</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>2）在.gitconfig 文件中引用忽略配置文件（此文件在 Windows 的家目录中）</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[user]</span><br><span class="hljs-attr">name</span> = Layne<br><span class="hljs-attr">email</span> = Layne@atguigu.com<br><span class="hljs-section">[core]</span><br><span class="hljs-attr">excludesfile</span> = C:/Users/asus/git.ignore<br><span class="hljs-comment"># 注意：这里要使用“正斜线（/）”，不要使用“反斜线（\）”</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="定位-Git-程序"><a href="#定位-Git-程序" class="headerlink" title="定位 Git 程序"></a>定位 Git 程序</h3> <img src="image-20230108192111793.png" srcset="/img/loading.gif" lazyload alt="image-20230108192111793" style="zoom:50%;" />
+
+
+
+<h3 id="初始化本地库-1"><a href="#初始化本地库-1" class="headerlink" title="初始化本地库"></a>初始化本地库</h3> <img src="image-20230108192131208.png" srcset="/img/loading.gif" lazyload alt="image-20230108192131208" style="zoom:50%;" />
+
+ <img src="image-20230108192139363.png" srcset="/img/loading.gif" lazyload alt="image-20230108192139363" style="zoom:50%;" />
+
+
+
+<h3 id="添加到暂存区"><a href="#添加到暂存区" class="headerlink" title="添加到暂存区"></a>添加到暂存区</h3><p>右键点击项目选择 Git -&gt; Add 将项目添加到暂存区。</p>
+ <img src="image-20230108192200136.png" srcset="/img/loading.gif" lazyload alt="image-20230108192200136" style="zoom:50%;" />
+
+
+
+<h3 id="提交到本地库"><a href="#提交到本地库" class="headerlink" title="提交到本地库"></a>提交到本地库</h3> <img src="image-20230108192216156.png" srcset="/img/loading.gif" lazyload alt="image-20230108192216156" style="zoom:50%;" />
+
+ <img src="image-20230108192223319.png" srcset="/img/loading.gif" lazyload alt="image-20230108192223319" style="zoom:50%;" />
+
+
+
+<h3 id="切换版本"><a href="#切换版本" class="headerlink" title="切换版本"></a>切换版本</h3><p>在 IDEA 的左下角，点击 Version Control，然后点击 Log 查看版本</p>
+ <img src="image-20230108192239487.png" srcset="/img/loading.gif" lazyload alt="image-20230108192239487" style="zoom:50%;" />
+
+<p>右键选择要切换的版本，然后在菜单里点击 Checkout Revision。</p>
+ <img src="image-20230108192257064.png" srcset="/img/loading.gif" lazyload alt="image-20230108192257064" style="zoom:50%;" />
+
+
+
+<h3 id="创建分支-1"><a href="#创建分支-1" class="headerlink" title="创建分支"></a>创建分支</h3><p>右键项目名称，选择 Git，在 Repository 里面，点击 Branches 按钮。</p>
+ <img src="image-20230108192316101.png" srcset="/img/loading.gif" lazyload alt="image-20230108192316101" style="zoom:50%;" />
+
+<p>或者直接右下角</p>
+ <img src="image-20230108192753427.png" srcset="/img/loading.gif" lazyload alt="image-20230108192753427" style="zoom:50%;" />
+
+<p>在弹出的 Git Branches 框里，点击 New Branch 按钮。</p>
+ <img src="image-20230108192330344.png" srcset="/img/loading.gif" lazyload alt="image-20230108192330344" style="zoom:50%;" />
+
+<p>填写分支名称，创建 hot-fix 分支。</p>
+ <img src="image-20230108192340638.png" srcset="/img/loading.gif" lazyload alt="image-20230108192340638" style="zoom:50%;" />
+
+<p>然后再 IDEA 的右下角看到 hot-fix，说明分支创建成功，并且当前已经切换成 hot-fix 分支</p>
+ <img src="image-20230108192355689.png" srcset="/img/loading.gif" lazyload alt="image-20230108192355689" style="zoom:45%;" />
+
+
+
+<h3 id="切换分支-1"><a href="#切换分支-1" class="headerlink" title="切换分支"></a>切换分支</h3><p>在 IDEA 窗口的右下角，切换到 master 分支。</p>
+ <img src="image-20230108192811004.png" srcset="/img/loading.gif" lazyload alt="image-20230108192811004" style="zoom:50%;" />
+
+<p>然后在 IDEA 窗口的右下角看到了 master，说明 master 分支切换成功。</p>
+ <img src="image-20230108192822615.png" srcset="/img/loading.gif" lazyload alt="image-20230108192822615" style="zoom:45%;" />
+
+
+
+<h3 id="合并分支-1"><a href="#合并分支-1" class="headerlink" title="合并分支"></a>合并分支</h3><p>在 IDEA 窗口的右下角，将 hot-fix 分支合并到当前 master 分支。</p>
+ <img src="image-20230108193358167.png" srcset="/img/loading.gif" lazyload alt="image-20230108193358167" style="zoom:50%;" />
+
+<p>如果代码没有冲突，分支直接合并成功，分支合并成功以后，代码自动提交，无需手动提交本地库</p>
+ <img src="image-20230108193430095.png" srcset="/img/loading.gif" lazyload alt="image-20230108193430095" style="zoom:50%;" />
+
+
+
+<h3 id="解决冲突-1"><a href="#解决冲突-1" class="headerlink" title="解决冲突"></a>解决冲突</h3><ul>
+<li><p>如图所示，如果 master 分支和 hot-fix 分支都修改了代码，在合并分支的时候就会发生冲突。</p>
+ <img src="image-20230108193455614.png" srcset="/img/loading.gif" lazyload alt="image-20230108193455614" style="zoom:50%;" />
+
+ <img src="image-20230108193508540.png" srcset="/img/loading.gif" lazyload alt="image-20230108193508540" style="zoom:50%;" />
+</li>
+<li><p>我们现在站在 master 分支上合并 hot-fix 分支，就会发生代码冲突。</p>
+  <img src="image-20230108193530533.png" srcset="/img/loading.gif" lazyload alt="image-20230108193530533" style="zoom:50%;" />
+</li>
+<li><p>点击 Conflicts 框里的 Merge 按钮，进行手动合并代码。</p>
+ <img src="image-20230108193555436.png" srcset="/img/loading.gif" lazyload alt="image-20230108193555436" style="zoom:65%;" />
+</li>
+<li><p>手动合并完代码以后，点击右下角的 Apply 按钮。</p>
+ <img src="image-20230108193612129.png" srcset="/img/loading.gif" lazyload alt="image-20230108193612129" style="zoom: 65%;" />
+</li>
+<li><p>代码冲突解决，自动提交本地库。</p>
+ <img src="image-20230108193622111.png" srcset="/img/loading.gif" lazyload alt="image-20230108193622111" style="zoom:50%;" /></li>
+</ul>
+<h2 id="IDEA-集成-GitHub"><a href="#IDEA-集成-GitHub" class="headerlink" title="IDEA 集成 GitHub"></a>IDEA 集成 GitHub</h2><h3 id="设置-GitHub-账号"><a href="#设置-GitHub-账号" class="headerlink" title="设置 GitHub 账号"></a>设置 GitHub 账号</h3> <img src="image-20230108194829256.png" srcset="/img/loading.gif" lazyload alt="image-20230108194829256" style="zoom:50%;" />
+
+ <img src="image-20230108194853347.png" srcset="/img/loading.gif" lazyload alt="image-20230108194853347" style="zoom: 67%;" />
+
+<p> 然后去 GitHub 账户上设置 token。</p>
+ <img src="image-20230108194955191.png" srcset="/img/loading.gif" lazyload alt="image-20230108194955191" style="zoom:50%;" />
+
+ <img src="image-20230108195003135.png" srcset="/img/loading.gif" lazyload alt="image-20230108195003135" style="zoom: 67%;" />
+
+ <img src="image-20230108195018754.png" srcset="/img/loading.gif" lazyload alt="image-20230108195018754" style="zoom: 67%;" />
+
+ <img src="image-20230108195029765.png" srcset="/img/loading.gif" lazyload alt="image-20230108195029765" style="zoom: 67%;" />
+
+<p>点击生成 token。</p>
+ <img src="image-20230108195047303.png" srcset="/img/loading.gif" lazyload alt="image-20230108195047303" style="zoom:80%;" />
+
+<p>复制红框中的字符串到 idea 中。</p>
+ <img src="image-20230108195100977.png" srcset="/img/loading.gif" lazyload alt="image-20230108195100977" style="zoom: 67%;" />
+
+<p>点击登录。</p>
+ <img src="image-20230108195118679.png" srcset="/img/loading.gif" lazyload alt="image-20230108195118679" style="zoom:80%;" />
+
+
+
+<h3 id="分享工程到-GitHub"><a href="#分享工程到-GitHub" class="headerlink" title="分享工程到 GitHub"></a>分享工程到 GitHub</h3> <img src="image-20230108195553914.png" srcset="/img/loading.gif" lazyload alt="image-20230108195553914" style="zoom: 67%;" />
+
+ <img src="image-20230108195603805.png" srcset="/img/loading.gif" lazyload alt="image-20230108195603805" style="zoom:80%;" />
+
+ <img src="image-20230108195614222.png" srcset="/img/loading.gif" lazyload alt="image-20230108195614222" style="zoom:80%;" />
+
+<p>来到 GitHub 中发现已经帮我们创建好了 gitTest 的远程仓库</p>
+ <img src="image-20230108195626793.png" srcset="/img/loading.gif" lazyload alt="image-20230108195626793" style="zoom:80%;" />
+
+
+
+
+
+<h3 id="push-推送本地库到远程库"><a href="#push-推送本地库到远程库" class="headerlink" title="push 推送本地库到远程库"></a>push 推送本地库到远程库</h3><p><strong>注意：</strong>push 是将本地库代码推送到远程库，如果本地库代码跟远程库代码版本不一致，push 的操作是会被拒绝的。也就是说，要想 push 成功，一定要保证本地库的版本要比远程库的版本高！因此一个成熟的程序员在动手改本地代码之前，一定会先检查下远程库跟本地代码的区别！如果本地的代码版本已经落后，切记要先 pull 拉取一下远程库的代码，将本地代码更新到最新以后，然后再修改，提交，推送！</p>
+<p>右键点击项目，可以将当前分支的内容 push 到 GitHub 的远程仓库中。</p>
+ <img src="image-20230108200506454.png" srcset="/img/loading.gif" lazyload alt="image-20230108200506454" style="zoom: 60%;" />
+
+
+
+<h3 id="pull-拉取远程库到本地库"><a href="#pull-拉取远程库到本地库" class="headerlink" title="pull 拉取远程库到本地库"></a>pull 拉取远程库到本地库</h3><p><strong>注意：</strong>pull 是拉取远端仓库代码到本地，如果远程库代码和本地库代码不一致，会自动合并，如果自动合并失败，还会涉及到手动解决冲突的问题。</p>
+<p>右键点击项目，可以将远程仓库的内容 pull 到本地仓库。</p>
+ <img src="image-20230108200809285.png" srcset="/img/loading.gif" lazyload alt="image-20230108200809285" style="zoom:60%;" />
+
+ <img src="image-20230108201028347.png" srcset="/img/loading.gif" lazyload alt="image-20230108201028347" style="zoom: 67%;" />
+
+
+
+<h3 id="clone-克隆远程库到本地"><a href="#clone-克隆远程库到本地" class="headerlink" title="clone 克隆远程库到本地"></a>clone 克隆远程库到本地</h3> <img src="image-20230108201251691.png" srcset="/img/loading.gif" lazyload alt="image-20230108201251691" style="zoom: 50%;" />
+
+ <img src="image-20230108201304613.png" srcset="/img/loading.gif" lazyload alt="image-20230108201304613" style="zoom:50%;" />
+
+<p>为 clone 下来的项目创建一个工程，然后点击 Next。</p>
+ <img src="image-20230108201322709.png" srcset="/img/loading.gif" lazyload alt="image-20230108201322709" style="zoom:50%;" />
+
+ <img src="image-20230108201330352.png" srcset="/img/loading.gif" lazyload alt="image-20230108201330352" style="zoom:50%;" />
+
+ <img src="image-20230108201347457.png" srcset="/img/loading.gif" lazyload alt="image-20230108201347457" style="zoom:50%;" />
+
+ <img src="image-20230108201354881.png" srcset="/img/loading.gif" lazyload alt="image-20230108201354881" style="zoom:50%;" />
+
+
+
+
+
+<h2 id="国内代码托管中心-码云"><a href="#国内代码托管中心-码云" class="headerlink" title="国内代码托管中心- 码云"></a>国内代码托管中心- 码云</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>众所周知，GitHub 服务器在国外，使用 GitHub 作为项目托管网站，如果网速不好的话，严重影响使用体验，甚至会出现登录不上的情况。针对这个情况，大家也可以使用国内的项目托管网站-码云</p>
+<p>码云是开源中国推出的基于 Git 的代码托管服务中心，网址是 <a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com/</a> ，使用方式跟 GitHub 一样，而且它还是一个中文网站，如果你英文不是很好它是最好的选择。</p>
+<h3 id="码云创建远程库"><a href="#码云创建远程库" class="headerlink" title="码云创建远程库"></a>码云创建远程库</h3><p>点击首页右上角的加号，选择下面的新建仓库</p>
+ <img src="image-20230108201702532.png" srcset="/img/loading.gif" lazyload alt="image-20230108201702532" style="zoom:40%;" />
+
+<p>填写仓库名称，路径和选择是否开源（共开库或私有库）</p>
+ <img src="image-20230108201719614.png" srcset="/img/loading.gif" lazyload alt="image-20230108201719614" style="zoom:40%;" />
+
+<p>最后根据需求选择分支模型，然后点击创建按钮</p>
+ <img src="image-20230108201735084.png" srcset="/img/loading.gif" lazyload alt="image-20230108201735084" style="zoom:40%;" />
+
+<p>远程库创建好以后，就可以看到 HTTPS 和 SSH 的链接</p>
+ <img src="image-20230108201751187.png" srcset="/img/loading.gif" lazyload alt="image-20230108201751187" style="zoom:40%;" />
+
+
+
+<h3 id="IDEA-集成码云"><a href="#IDEA-集成码云" class="headerlink" title="IDEA 集成码云"></a>IDEA 集成码云</h3><h4 id="IDEA-安装码云插件"><a href="#IDEA-安装码云插件" class="headerlink" title="IDEA 安装码云插件"></a>IDEA 安装码云插件</h4><p>Idea 默认不带码云插件，我们第一步要安装 Gitee 插件。</p>
+<p>如图所示，在 Idea 插件商店搜索 Gitee，然后点击右侧的 Install 按钮。</p>
+ <img src="image-20230108202847169.png" srcset="/img/loading.gif" lazyload alt="image-20230108202847169" style="zoom:50%;" />
+
+<p>然后在码云插件里面添加码云帐号，我们就可以用 Idea 连接码云了。</p>
+ <img src="image-20230108202909617.png" srcset="/img/loading.gif" lazyload alt="image-20230108202909617" style="zoom:50%;" />
+
+
+
+<h3 id="IDEA-连接码云"><a href="#IDEA-连接码云" class="headerlink" title="IDEA 连接码云"></a>IDEA 连接码云</h3><p>Idea 连接码云和连接 GitHub 几乎一样，首先在 Idea 里面创建一个工程，初始化 git 工程，然后将代码添加到暂存区，提交到本地库，这些步骤上面已经讲过，此处不再赘述。</p>
+<h3 id="码云复制-GitHub-项目"><a href="#码云复制-GitHub-项目" class="headerlink" title="码云复制 GitHub 项目"></a>码云复制 GitHub 项目</h3><p>码云提供了直接复制 GitHub 项目的功能，方便我们做项目的迁移和下载。</p>
+<p>具体操作如下：</p>
+ <img src="image-20230108204240387.png" srcset="/img/loading.gif" lazyload alt="image-20230108204240387" style="zoom:45%;" />
+
+<p>将 GitHub 的远程库 HTTPS 链接复制过来，点击创建按钮即可。</p>
+ <img src="image-20230108204259904.png" srcset="/img/loading.gif" lazyload alt="image-20230108204259904" style="zoom:45%;" />
+
+<img src="image-20230108204337608.png" srcset="/img/loading.gif" lazyload alt="image-20230108204337608" style="zoom:45%;" />
+
+<p>如果 GitHub 项目更新了以后，在码云项目端可以手动重新同步，进行更新！</p>
+ <img src="image-20230108204357533.png" srcset="/img/loading.gif" lazyload alt="image-20230108204357533" style="zoom:45%;" />
+
+ <img src="image-20230108204409080.png" srcset="/img/loading.gif" lazyload alt="image-20230108204409080" style="zoom:45%;" />
+
+ <img src="image-20230108204421759.png" srcset="/img/loading.gif" lazyload alt="image-20230108204421759" style="zoom:50%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Git</div>
+      <div>https://leung-yh.github.io/2022/12/28/GitNote/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Leungyh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/18/SpringMVC/" title="SpringMVC">
+                        <span class="hidden-mobile">SpringMVC</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
