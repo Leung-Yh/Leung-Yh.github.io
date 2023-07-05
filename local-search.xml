@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>用户中心项目</title>
+    <link href="/2023/07/05/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE/"/>
+    <url>/2023/07/05/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="报错与问题解决"><a href="#报错与问题解决" class="headerlink" title="报错与问题解决"></a>报错与问题解决</h1><h2 id="yarn无法卸载"><a href="#yarn无法卸载" class="headerlink" title="yarn无法卸载"></a>yarn无法卸载</h2><p>把 Node.js 一起删除，然后下载安装版 yarn</p><h2 id="使用yarn安装相关依赖时报错"><a href="#使用yarn安装相关依赖时报错" class="headerlink" title="使用yarn安装相关依赖时报错"></a>使用yarn安装相关依赖时报错</h2><p>报错信息指向路径问题</p><p><a href="https://zhuanlan.zhihu.com/p/148188987">Node.js的安装以及配置npm全局模块路径和缓存路径 - 知乎 (zhihu.com)</a></p><h2 id="初始化相关问题"><a href="#初始化相关问题" class="headerlink" title="初始化相关问题"></a>初始化相关问题</h2><p>应该使用 <strong>ANT DESIGN PRO V4</strong> 的初始化方式：<a href="https://pro.ant.design/zh-CN/docs/getting-started">开始使用 - Ant Design Pro</a></p><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-comment"># 使用 npm</span><br><span class="hljs-built_in">npm</span> i @ant-design/pro-cli -g<br>pro create myapp<br></code></pre></td></tr></table></figure><h2 id="Nodejs新版本引起的问题"><a href="#Nodejs新版本引起的问题" class="headerlink" title="Nodejs新版本引起的问题"></a>Nodejs新版本引起的问题</h2><p>问题描述：</p><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs subunit">node:internal/crypto/hash:71<br>  this[kHandle] = new _Hash(algorithm, xofLen);<br>                  ^<br><br><span class="hljs-keyword">Error: </span>error:0308010C:digital envelope routines::unsupported<br>...<br></code></pre></td></tr></table></figure><p><strong>解决方法：在需要执行的命令之前加入 <code>SET NODE_OPTIONS=--openssl-legacy-provider</code></strong></p><p>参照：<a href="https://blog.csdn.net/fengyuyeguirenenen/article/details/128319228">nodejs新版本引起的：digital envelope routines::unsupported</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Git</title>
     <link href="/2022/12/28/GitNote/"/>
     <url>/2022/12/28/GitNote/</url>
